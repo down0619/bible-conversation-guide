@@ -101,6 +101,40 @@ const topics=[
 {category:'single',id:'bible-daily-single',icon:'☼',question:'성경이 우리의 일상에도 도움이 될까요?',tag:'독신 · 일반 질문',title:'성경이 우리의 일상에도 도움이 될까요?',intro:'일과 생활, 관계와 개인적인 선택에서 성경의 조언이 어떻게 실용적인 도움을 주는지 함께 살펴볼 수 있습니다.',verse:'“모든 성경은 하느님의 영감을 받은 것으로, 가르치고 책망하고 바로잡고 의로 징계하는 데 유익합니다.”',ref:'디모데 후서 3:16',verseZh:'圣经全都是上帝指引人写下来的，对于教导、责备、纠正、按正义的标准施行管教，都有益处。',thought:'성경의 원칙은 일상에서 판단하고 선택할 때 방향을 잡도록 도와줄 수 있습니다.',image:'https://cms-imgp.jw-cdn.org/img/p/2023008/univ/art/2023008_univ_sqr_xl.jpg',alt:'성경의 실용적인 조언에 관한 파수대 삽화',pub:'파수대 | 성경은 실용적인 조언을 해 줍니다',pubUrl:'https://www.jw.org/ko/라이브러리/magazines/파수대-2023년-제1호/성경의-조언-정신-건강에-도움이-된다/',verseUrl:'https://wol.jw.org/ko/wol/b/r8/lp-ko/nwtsty/55/3'},{category:'single',id:'meaningful-life-single',icon:'✦',question:'우리가 지금보다 더 의미 있고 행복하게 사는 것이 가능할까요?',draft:true}
 ,{category:'single',id:'live-forever-happily-single',icon:'∞',question:'영원히 즐겁게 사는 것이 가능합니까?',draft:true}
 ,{category:'single',id:'future-options-single',icon:'↗',question:'우리의 미래는 어떻게 될까요? 앞으로도 변함없을까요? 더 나빠질까요? 더 좋아질까요?',draft:true}];
+const startPageTopics = [
+['free-bible-study','성경을 무료로 공부해 보실 수 있도록 권해 드리고 있습니다.'],
+['worry','걱정과 불안을 줄이는 데 도움이 되는 성경의 실용적인 조언을 소개해 드리려고 왔습니다'],
+['future','성경이 알려 주는 희망적인 미래에 대해 간단히 소개해 드리려고 방문했습니다.'],
+['family-closer','가족들이 서로 더 가까워지는 데 도움이 되는 성경의 조언을 소개해 드리려고 방문했습니다.'],
+['raising-children','자녀를 사랑으로 잘 양육하는 데 도움이 되는 성경의 실용적인 조언을 소개해 드리려고 방문했습니다.'],
+['bible-daily-single','행복과 만족감을 얻는 방법에 대해 성경이 어떤 조언을 하는지 소개해 드리려고 왔습니다.'],
+['aging','나이가 들어가면서도 행복하고 의미 있는 삶을 살아가는 데 도움이 되는 성경의 조언을 소개해 드리려고 방문했습니다.'],
+['meaningful-life','우리가 지금보다 더 의미 있고 행복하게 사는 것이 가능할까요?'],
+['worry-stress','요즘은 걱정거리가 예전보다 더 많아졌다고 느끼시나요?'],
+['bible-daily-family','강아지 후각이 얼마나 뛰어난지 생각해 보셨나요?'],
+['bible-daily-general','성경이 우리의 일상에도 도움이 될까요?'],
+['live-forever-happily','영원히 즐겁게 사는 것이 가능합니까?'],
+['news-world-better','뉴스를 보면 걱정되는 일이 많은데요. 앞으로 세상이 더 좋아질 수 있다고 생각하시나요?'],
+['happy-when-aging','나이가 들어도 행복하게 살 수 있는 비결이 있을까요?'],
+['meaningful-friendship','친구는 많은 것이 중요할까요, 정말 믿을 만한 친구 한 명이 중요한 것일까요?'],
+['reduce-loneliness','외로움을 줄이는 가장 좋은 방법은 무엇이라고 생각하시나요?'],
+['family-love-understanding','가족 사이에서 가장 중요한 것은 사랑일까요, 이해일까요?'],
+['lasting-happiness','요즘은 원하는 것을 이루어도 만족감이 오래가지 않는다고들 하는데요. 지속적인 행복이 가능할까요?'],
+['future-better-world','앞으로 세상이 지금보다 좋아질 가능성이 있다고 생각하시나요?'],
+['who-is-god','하느님은 어떤 분입니까?'],
+['who-is-jesus','예수는 어떤 분입니까?'],
+['bible-help','성경이 당신에게 어떻게 도움이 됩니까?'],
+['what-happens-when-die','사람이 죽으면 어떻게 됩니까?'],
+['bible-family-life','성경이 가정생활에 어떻게 도움이 됩니까?'],
+['overcome-anxiety','어떻게 염려를 극복할 수 있습니까?'],
+['how-to-be-happy','어떻게 하면 행복해질 수 있습니까?'],
+['manage-money','어떻게 자산을 잘 관리할 수 있습니까?']
+];
+startPageTopics.forEach(([id,label])=>{
+  const existing=topics.find(t=>t.id===id);
+  if(existing){existing.question=label;existing.title=label;}
+  else topics.push({category:'general',id,icon:'✦',question:label,title:label,tag:'성경의 대답',intro:'이 주제에 관한 성경의 내용을 함께 살펴보세요.',draft:true});
+});
 const qList=document.getElementById('qList'),detail=document.getElementById('detail'),categoryNav=document.getElementById('categoryNav'),panelTitle=document.getElementById('panelTitle');let activeCategory='general';document.querySelector('.modal-close').addEventListener('click',()=>document.getElementById('verseModal').close());document.getElementById('verseModal').addEventListener('click',e=>{if(e.target===e.currentTarget)e.currentTarget.close()});
 function xmlEscape(s){return String(s).replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&apos;'}[c]))}
 function wrapVerse(text,max){const chars=Array.from(text);const lines=[];while(chars.length){let cut=Math.min(max,chars.length);if(cut<chars.length){const space=chars.lastIndexOf(' ',cut);if(space>Math.floor(max*.55))cut=space}let line=chars.splice(0,cut).join('').trim();while(chars[0]===' ')chars.shift();lines.push(line)}return lines}function verseImageSrc(t){const ko=wrapVerse(t.verse,21),zh=wrapVerse(t.verseZh,21),h=160+ko.length*52+zh.length*52+140,koY=190,dividerY=koY+ko.length*52+21,zhLabelY=dividerY+42,zhY=zhLabelY+42;const spans=(lines,y)=>lines.map((line,i)=>`<tspan x="78" y="${y+i*52}">${xmlEscape(line)}</tspan>`).join('');const svg=`<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 900 ${h}" role="img"><defs><linearGradient id="bg" x1="0" y1="0" x2="1" y2="1"><stop stop-color="#f7f4e9"/><stop offset="1" stop-color="#e6f0ea"/></linearGradient><linearGradient id="accent"><stop stop-color="#a57b39"/><stop offset="1" stop-color="#2d6b69"/></linearGradient></defs><rect width="900" height="${h}" rx="28" fill="url(#bg)"/><circle cx="830" cy="40" r="110" fill="#fff" opacity=".42"/><path d="M0 0h900v10H0z" fill="url(#accent)"/><text x="78" y="72" font-family="Arial,'Microsoft YaHei',sans-serif" font-size="20" letter-spacing="3" fill="#52706a">성경 말씀 · 经文</text><text x="78" y="125" font-family="Arial,'Microsoft YaHei',sans-serif" font-size="29" font-weight="700" fill="#18333a">${xmlEscape(t.ref)}</text><text font-family="'Malgun Gothic','Microsoft YaHei',sans-serif" font-size="32" fill="#20383a">${spans(ko,koY)}</text><path d="M78 ${dividerY}h744" stroke="#c8d6ce" stroke-width="2"/><text x="78" y="${zhLabelY}" font-family="Arial,'Microsoft YaHei',sans-serif" font-size="18" letter-spacing="2" fill="#52706a">中文 · 简体</text><text font-family="'Microsoft YaHei','SimHei',sans-serif" font-size="32" fill="#20383a">${spans(zh,zhY)}</text><text x="822" y="${h-29}" text-anchor="end" font-family="Arial,sans-serif" font-size="14" fill="#80918a">JW.ORG</text></svg>`;return 'data:image/svg+xml;charset=utf-8,'+encodeURIComponent(svg)}
